@@ -22,12 +22,12 @@ describe('Shops', () => {
   });
 
   it("gets a shop's active listings", () => {
-    const listing = client.shop(1).activeListings;
+    const listing = client.shops.find(1).activeListings;
     assert.equal(listing.endpoint, '/shops/1/listings/active');
   });
 
   it("gets a shop's featured listings", () => {
-    const listing = client.shop(1).featuredListings;
+    const listing = client.shops.find(1).featuredListings;
     assert.equal(listing.endpoint, '/shops/1/listings/featured');
   });
 });

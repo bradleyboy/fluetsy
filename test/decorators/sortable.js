@@ -6,7 +6,7 @@ const client = new Etsy('1234');
 describe('Sortable decorator', () => {
   it('is sortable', () => {
     const listing = client
-      .Listings
+      .activeListings
       .sortBy('price');
 
     assert.equal(listing.parameters.get('sort_on'), 'price');
@@ -14,7 +14,7 @@ describe('Sortable decorator', () => {
 
   it('is sortable by direction', () => {
     const listing = client
-      .Listings
+      .activeListings
       .sortBy('price')
       .sortOrder('down');
 
@@ -23,7 +23,7 @@ describe('Sortable decorator', () => {
 
   it('is sortable with shorthand', () => {
     const listing = client
-      .Listings
+      .activeListings
       .sort('price', 'down');
 
     assert.equal(listing.parameters.get('sort_on'), 'price');
@@ -32,7 +32,7 @@ describe('Sortable decorator', () => {
 
   it('is sortable with .ascending', () => {
     const listing = client
-      .Listings
+      .activeListings
       .sortBy('price')
       .ascending;
 
@@ -42,7 +42,7 @@ describe('Sortable decorator', () => {
 
   it('is sortable with .descending', () => {
     const listing = client
-      .Listings
+      .activeListings
       .sortBy('price')
       .descending;
 

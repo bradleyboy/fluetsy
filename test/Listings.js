@@ -3,20 +3,22 @@ import assert from 'assert';
 
 const client = new Etsy('1234');
 
-describe('Listing', () => {
+describe('activeListings', () => {
   it('gets active listings', () => {
-    const listing = client.Listings;
+    const listing = client.activeListings;
     assert.equal(listing.endpoint, '/listings/active');
     assert.equal(listing.parameters.get('api_key'), '1234');
   });
 
   it('gets interesting listings', () => {
-    const listing = client.Listings.interesting;
+    const listing = client.interestingListings;
     assert.equal(listing.endpoint, '/listings/interesting');
+    assert.equal(listing.parameters.get('api_key'), '1234');
   });
 
   it('gets trending listings', () => {
-    const listing = client.Listings.trending;
+    const listing = client.trendingListings;
     assert.equal(listing.endpoint, '/listings/trending');
+    assert.equal(listing.parameters.get('api_key'), '1234');
   });
 });

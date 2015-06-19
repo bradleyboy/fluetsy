@@ -6,7 +6,7 @@ const client = new Etsy('1234');
 describe('Price Range decorator', () => {
   it('sets a min price', () => {
     const listing = client
-      .Listings
+      .activeListings
       .minPrice(10);
 
     assert.equal(listing.parameters.get('min_price'), 10);
@@ -14,7 +14,7 @@ describe('Price Range decorator', () => {
 
   it('sets a max price', () => {
     const listing = client
-      .Listings
+      .activeListings
       .maxPrice(10);
 
     assert.equal(listing.parameters.get('max_price'), 10);
@@ -22,7 +22,7 @@ describe('Price Range decorator', () => {
 
   it('sets a price range', () => {
     const listing = client
-      .Listings
+      .activeListings
       .pricedBetween(10, 20);
 
     assert.equal(listing.parameters.get('min_price'), 10);

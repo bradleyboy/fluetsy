@@ -2,8 +2,9 @@
   "name": "etsy-api",
   "version": "0.0.1",
   "description": "Fluent, promise-based library for accessing the Etsy API.",
-  "main": "lib/Etsy.js",
+  "main": "dist/Etsy.js",
   "scripts": {
+    "prepublish": "babel lib --out-dir dist",
     "test": "mocha --watch --compilers js:babel/register --recursive"
   },
   "keywords": [

@@ -6,7 +6,8 @@
   "scripts": {
     "prepublish": "babel lib --out-dir dist",
     "lint": "eslint lib",
-    "test": "mocha --watch --compilers js:babel/register --recursive"
+    "test": "mocha --compilers js:babel/register --recursive",
+    "test:watch": "mocha --compilers js:babel/register --recursive --watch"
   },
   "keywords": [
     "etsy",

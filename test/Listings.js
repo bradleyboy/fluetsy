@@ -3,7 +3,7 @@ import assert from 'assert';
 
 const client = new Etsy('1234');
 
-describe('activeListings', () => {
+describe('Listings', () => {
   it('gets active listings', () => {
     const listing = client.activeListings;
     assert.equal(listing.endpoint, '/listings/active');

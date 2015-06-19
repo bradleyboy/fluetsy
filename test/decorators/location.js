@@ -24,4 +24,11 @@ describe('Location decorator', () => {
     const listing = client.activeListings.location('Brooklyn').geoLevel('state');
     assert.equal(listing.parameters.get('geo_level'), 'state');
   });
+
+  it('sets the max distance', () => {
+    const listing = client.shops.location(33.7550, 84.3900).distance(40);
+    assert.equal(listing.parameters.get('lat'), 33.7550);
+    assert.equal(listing.parameters.get('lon'), 84.3900);
+    assert.equal(listing.parameters.get('distance_max'), 40);
+  });
 })

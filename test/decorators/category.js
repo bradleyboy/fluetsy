@@ -1,7 +1,7 @@
-import Etsy from '../../lib/Etsy';
+import Fluetsy from '../../lib';
 import assert from 'assert';
 
-const client = new Etsy('1234');
+const client = new Fluetsy('1234');
 
 describe('Category decorator', () => {
   it('filters by category', () => {

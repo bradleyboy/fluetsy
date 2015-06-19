@@ -18,6 +18,20 @@ describe('Searchable decorator', () => {
     assert.deepEqual(listing.parameters.get('keywords'), ['merica', 'baseball']);
   });
 
+  it('searches with array of keywords (search alias method)', () => {
+    const listing = client.activeListings.search(['merica', 'baseball']);
+
+    assert(listing.parameters.has('keywords'));
+    assert.deepEqual(listing.parameters.get('keywords'), ['merica', 'baseball']);
+  });
+
+  it('searches with array of keywords added as args', () => {
+    const listing = client.activeListings.search('merica', 'baseball');
+
+    assert(listing.parameters.has('keywords'));
+    assert.deepEqual(listing.parameters.get('keywords'), ['merica', 'baseball']);
+  });
+
   it('sets translate keywords', () => {
     const listing = client
       .activeListings

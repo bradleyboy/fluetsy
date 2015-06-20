@@ -5,12 +5,12 @@ class Dummy extends Base {
   endpoint = '/dummy';
 }
 
-const base = new Dummy('1234');
+const base = new Dummy({apiKey: '1234'});
 
 describe('Base', () => {
   it('constructs with API key', () => {
     assert.equal(base.parameters.get('api_key'), '1234');
-    assert.equal(base.apiKey, '1234');
+    assert.equal(base.config.apiKey, '1234');
   });
 
   it('has an endpoint', () => {

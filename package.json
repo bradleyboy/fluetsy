@@ -4,7 +4,7 @@
   "description": "Fluent, promise-based library for accessing the Etsy API.",
   "main": "dist/index.js",
   "scripts": {
-    "prepublish": "babel lib --out-dir dist",
+    "prepublish": "babel lib --out-dir dist && mv ./dist/server.js ./server.js",
     "lint": "eslint lib",
     "test": "mocha --compilers js:babel/register --recursive",
     "test:watch": "mocha --compilers js:babel/register --recursive --watch"

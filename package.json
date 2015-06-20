@@ -7,7 +7,8 @@
     "prepublish": "babel lib --out-dir dist && mv ./dist/server.js ./server.js",
     "lint": "eslint lib",
     "test": "mocha --compilers js:babel/register --recursive",
-    "test:watch": "mocha --compilers js:babel/register --recursive --watch"
+    "test:watch": "mocha --compilers js:babel/register --recursive --watch",
+    "test:coverage": "istanbul cover _mocha -- --compilers js:babel/register --recursive"
   },
   "keywords": [
     "etsy",
@@ -31,6 +32,9 @@
   },
   "devDependencies": {
     "babel": "^5.5.8",
+    "babel-eslint": "^3.1.17",
+    "eslint": "^0.23.0",
+    "istanbul": "^0.3.15",
     "mocha": "^2.2.5"
   }
 }

@@ -1,32 +1,39 @@
-import Fluetsy from '../../lib';
+import Base from '../../lib/api/Base';
+import searchable from '../../lib/decorators/searchable';
+
 import assert from 'assert';
 
-const client = new Fluetsy('1234');
+@searchable
+class Dummy extends Base {
+  endpoint = '/dummy';
+}
+
+const client = new Dummy('1234');
 
 describe('Searchable decorator', () => {
   it('searches with keywords', () => {
-    const listing = client.activeListings.keywords('baseball');
+    const listing = client.keywords('baseball');
 
     assert(listing.parameters.has('keywords'));
     assert.equal(listing.parameters.get('keywords'), 'baseball');
   });
 
   it('searches with array of keywords', () => {
-    const listing = client.activeListings.keywords(['merica', 'baseball']);
+    const listing = client.keywords(['merica', 'baseball']);
 
     assert(listing.parameters.has('keywords'));
     assert.deepEqual(listing.parameters.get('keywords'), ['merica', 'baseball']);
   });
 
   it('searches with array of keywords (search alias method)', () => {
-    const listing = client.activeListings.search(['merica', 'baseball']);
+    const listing = client.search(['merica', 'baseball']);
 
     assert(listing.parameters.has('keywords'));
     assert.deepEqual(listing.parameters.get('keywords'), ['merica', 'baseball']);
   });
 
   it('searches with array of keywords added as args', () => {
-    const listing = client.activeListings.search('merica', 'baseball');
+    const listing = client.search('merica', 'baseball');
 
     assert(listing.parameters.has('keywords'));
     assert.deepEqual(listing.parameters.get('keywords'), ['merica', 'baseball']);
@@ -34,7 +41,6 @@ describe('Searchable decorator', () => {
 
   it('sets translate keywords', () => {
     const listing = client
-      .activeListings
       .keywords(['merica', 'baseball'])
       .translateKeywords;
 

@@ -1,12 +1,18 @@
-import Fluetsy from '../../lib';
+import Base from '../../lib/api/Base';
+import sortable from '../../lib/decorators/sortable';
+
 import assert from 'assert';
 
-const client = new Fluetsy('1234');
+@sortable('price')
+class Dummy extends Base {
+  endpoint = '/dummy';
+}
+
+const client = new Dummy('1234');
 
 describe('Sortable decorator', () => {
   it('is sortable', () => {
     const listing = client
-      .activeListings
       .sortBy('price');
 
     assert.equal(listing.parameters.get('sort_on'), 'price');
@@ -14,7 +20,6 @@ describe('Sortable decorator', () => {
 
   it('is sortable by direction', () => {
     const listing = client
-      .activeListings
       .sortBy('price')
       .sortOrder('down');
 
@@ -23,7 +28,6 @@ describe('Sortable decorator', () => {
 
   it('is sortable with shorthand', () => {
     const listing = client
-      .activeListings
       .sort('price', 'down');
 
     assert.equal(listing.parameters.get('sort_on'), 'price');
@@ -32,7 +36,6 @@ describe('Sortable decorator', () => {
 
   it('is sortable with .ascending', () => {
     const listing = client
-      .activeListings
       .sortBy('price')
       .ascending;
 
@@ -42,7 +45,6 @@ describe('Sortable decorator', () => {
 
   it('is sortable with .descending', () => {
     const listing = client
-      .activeListings
       .sortBy('price')
       .descending;
 

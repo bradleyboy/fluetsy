@@ -1,11 +1,18 @@
-import Fluetsy from '../../lib';
+import Base from '../../lib/api/Base';
+import paginate from '../../lib/decorators/paginate';
+
 import assert from 'assert';
 
-const client = new Fluetsy('1234');
+@paginate
+class Dummy extends Base {
+  endpoint = '/dummy';
+}
+
+const client = new Dummy('1234');
 
 describe('Paginate decorator', () => {
   it('applies a limit', () => {
-    const listing = client.activeListings.limit(4);
+    const listing = client.limit(4);
     assert.equal(listing.parameters.get('limit'), 4);
   });
 })
